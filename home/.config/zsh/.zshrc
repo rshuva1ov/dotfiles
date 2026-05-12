@@ -1,15 +1,23 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc in $ZDOTDIR.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# XDG: история и кэш compinit (раньше файлы в $HOME)
+: "${XDG_STATE_HOME:=$HOME/.local/state}"
+: "${XDG_CACHE_HOME:=$HOME/.cache}"
+[[ -d "$XDG_STATE_HOME/zsh" ]] || mkdir -p "$XDG_STATE_HOME/zsh"
+[[ -d "$XDG_CACHE_HOME/zsh" ]] || mkdir -p "$XDG_CACHE_HOME/zsh"
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+export ZCOMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump-${HOST}-${ZSH_VERSION}"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# Path to your Oh My Zsh installation (рядом с $ZDOTDIR в ~/.config/zsh).
+export ZSH="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/oh-my-zsh"
 
 # Кастомные плагины и темы (powerlevel10k, zsh-autosuggestions, zsh-syntax-highlighting):
 # $ZSH_CUSTOM/plugins/ и $ZSH_CUSTOM/themes/
@@ -70,7 +78,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # You can set one of the optional three formats:
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
+# see `man strftime` for details.
 # HIST_STAMPS="mm-dd-yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
@@ -116,17 +124,17 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# alias zshconfig="mate $ZDOTDIR/.zshrc"
+# alias ohmyzsh="mate $ZSH"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit $ZDOTDIR/.p10k.zsh.
+[[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source "$ZDOTDIR/.p10k.zsh"
 
 # =============================================================================
-# Powerlevel10k — runtime presets (loaded after ~/.p10k.zsh)
+# Powerlevel10k — runtime presets (loaded после $ZDOTDIR/.p10k.zsh)
 # -----------------------------------------------------------------------------
 # These functions tweak POWERLEVEL9K_* in memory and call `p10k reload`.
-# Nothing here edits ~/.p10k.zsh; use the persist helpers below to remember
+# Nothing here edits .p10k.zsh; use the persist helpers below to remember
 # choices across new terminal sessions.
 #
 # Cycle (interactive):
@@ -134,7 +142,7 @@ source $ZSH/oh-my-zsh.sh
 #   p10k_cycle_icons     — 3 presets for OS / duration / jobs / git / status glyphs
 #   p10k_cycle_dir       — 6 presets for path shortening + optional dir hyperlinks
 #
-# Persist the three indices to ~/.p10k-cycle-state.zsh (0600 on write):
+# Persist the three indices to $ZDOTDIR/.p10k-cycle-state.zsh (0600 on write):
 #   p10k_save_cycle_state   — write current indices after you finish cycling
 #   p10k_load_cycle_state   — re-source the file and re-apply (manual refresh)
 #   p10k_clear_cycle_state  — remove the file; open a new tab or `exec zsh`

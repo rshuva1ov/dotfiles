@@ -1,6 +1,10 @@
 .DS_Store
 *.zwc
+.zcompdump*
 .zsh_history
+
+# Oh My Zsh — данные установки (не в репозитории)
+home/.config/zsh/oh-my-zsh/
 *.swp
 *.tmp
 Thumbs.db
