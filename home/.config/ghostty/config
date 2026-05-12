@@ -1,0 +1,8 @@
+# Единый конфиг: ~/.config/ghostty/config (XDG).
+font-size = 16.5
+theme = "Atom One Dark"
+background-blur-radius = 20
+mouse-hide-while-typing = true
+background-opacity = 0.7
+
+initial-command = "ghostty +boo"
