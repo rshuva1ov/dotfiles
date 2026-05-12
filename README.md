@@ -23,7 +23,7 @@
 - [GNU Stow](https://www.gnu.org/software/stow/): `brew install stow`
 - [Oh My Zsh](https://ohmyz.sh/) в `~/.oh-my-zsh`
 
-## Установка на эту или другую машину
+## Установка
 
 ```bash
 git clone <url> ~/Desktop/dotfiles   # или другой путь
@@ -48,17 +48,4 @@ ln -sf "$REPO/home/.config/ghostty" ~/.config/ghostty
 mkdir -p ~/Library/Application\ Support/Cursor/User
 ln -sf "$REPO/home/Library/Application Support/Cursor/User/settings.json" ~/Library/Application\ Support/Cursor/User/settings.json
 ln -sf "$REPO/home/Library/Application Support/Cursor/User/keybindings.json" ~/Library/Application\ Support/Cursor/User/keybindings.json
-```
-
-## Обновление из текущего Mac (перезаписать копии в репо)
-
-После правок в `~` выполни из репозитория (пример):
-
-```bash
-cp ~/.zshrc home/.zshrc
-cp ~/.p10k.zsh home/.p10k.zsh
-rsync -a --delete --exclude='.git' ~/.config/zsh/ home/.config/zsh/
-cp ~/.config/ghostty/config home/.config/ghostty/config 2>/dev/null || true
-cp ~/Library/Application\ Support/Cursor/User/settings.json "home/Library/Application Support/Cursor/User/"
-cp ~/Library/Application\ Support/Cursor/User/keybindings.json "home/Library/Application Support/Cursor/User/"
 ```
