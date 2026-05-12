@@ -4,14 +4,14 @@
 
 ## Структура (`home/` зеркалит `$HOME`)
 
-| Путь в репозитории | Назначение |
-|--------------------|------------|
-| `home/.zshrc` | Zsh + Oh My Zsh |
-| `home/.p10k.zsh` | Powerlevel10k |
-| `home/.config/zsh/` | `ZSH_CUSTOM` (темы и плагины) |
-| `home/.config/ghostty/config` | [Ghostty](https://ghostty.org/) |
-| `home/Library/Application Support/Cursor/User/settings.json` | Cursor |
-| `home/Library/Application Support/Cursor/User/keybindings.json` | Cursor |
+| Путь в репозитории                                              | Назначение                      |
+| --------------------------------------------------------------- | ------------------------------- |
+| `home/.zshrc`                                                   | Zsh + Oh My Zsh                 |
+| `home/.p10k.zsh`                                                | Powerlevel10k                   |
+| `home/.config/zsh/`                                             | `ZSH_CUSTOM` (темы и плагины)   |
+| `home/.config/ghostty/config`                                   | [Ghostty](https://ghostty.org/) |
+| `home/Library/Application Support/Cursor/User/settings.json`    | Cursor                          |
+| `home/Library/Application Support/Cursor/User/keybindings.json` | Cursor                          |
 
 **Oh My Zsh** ожидается в `~/.oh-my-zsh` (отдельная установка), в репозиторий не входит.
 
@@ -62,20 +62,3 @@ cp ~/.config/ghostty/config home/.config/ghostty/config 2>/dev/null || true
 cp ~/Library/Application\ Support/Cursor/User/settings.json "home/Library/Application Support/Cursor/User/"
 cp ~/Library/Application\ Support/Cursor/User/keybindings.json "home/Library/Application Support/Cursor/User/"
 ```
-
-## Раньше был `zsh-dotfiles`
-
-Его можно архивировать или оставить как историю: этот репозиторий **заменяет** его по смыслу (zsh + Cursor + Ghostty). Старые симлинки на `zsh-dotfiles` при необходимости переключи на `dotfiles` тем же `stow` или ручными `ln -sf`.
-
-## Первый push
-
-Создай пустой репозиторий на GitHub/GitLab, затем:
-
-```bash
-cd ~/Desktop/dotfiles
-git remote add origin git@github.com:<USER>/dotfiles.git
-git branch -M main
-git push -u origin main
-```
-
-Перед пушем проверь `settings.json` на токены и локальные пути, которые не стоит публиковать.
