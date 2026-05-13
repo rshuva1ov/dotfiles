@@ -2,7 +2,7 @@
 
 Личные конфиги для macOS: **[zsh](https://www.zsh.org/)** с [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) и темой [Powerlevel10k](https://github.com/romkatv/powerlevel10k), **[eza](https://github.com/eza-community/eza)** (в `.zshrc` заданы `ls` / `ll` / `la` / `lt` / `lta`) и **[Ghostty](https://ghostty.org/)**.
 
-Каталог `home/` зеркалится в `$HOME` через [GNU Stow](https://www.gnu.org/software/stow/). [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) и связанные репозитории клонируются скриптом (см. шаг 4).
+Каталог `home/` зеркалится в `$HOME` через [GNU Stow](https://www.gnu.org/software/stow/). [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) и связанные репозитории клонируются скриптом (см. шаг 4). Папки `~/.config/zsh/oh-my-zsh-custom` в репозитории **нет** — её создаёт установка и туда же кладутся тема и плагины.
 
 ## Установка с нуля (строго по шагам)
 
@@ -34,7 +34,7 @@
    ./scripts/install-dotfiles.sh
    ```
 
-   Скрипт делает: Stow (`home/` → `$HOME`), при необходимости дотягивает **eza** через brew, клонирует Oh My Zsh, Powerlevel10k, zsh-autosuggestions, zsh-syntax-highlighting.
+   Скрипт делает: Stow (`home/` → `$HOME`), при необходимости дотягивает **eza** через brew, клонирует Oh My Zsh в `~/.config/zsh/oh-my-zsh`, тему и плагины — в `~/.config/zsh/oh-my-zsh-custom/` (каталог создаётся скриптом).
 
 5. **После успешного скрипта**  
    Открой новое окно терминала или выполни `exec zsh`, чтобы подхватился `~/.zshenv` и `ZDOTDIR`. Сообщение «Ghostty не в PATH» после скрипта часто нормально для cask: приложение всё равно в `/Applications`.

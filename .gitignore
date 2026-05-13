@@ -3,13 +3,12 @@
 .zcompdump*
 .zsh_history
 
-# Oh My Zsh — данные установки (не в репозитории)
+# Клоны внутри home/ (ошибочно в дереве репо — не коммитить)
 home/.config/zsh/oh-my-zsh/
-
-# Сторонние темы и плагины — ставятся через scripts/install-zsh-from-github.sh
 home/.config/zsh/oh-my-zsh-custom/plugins/zsh-autosuggestions/
 home/.config/zsh/oh-my-zsh-custom/plugins/zsh-syntax-highlighting/
 home/.config/zsh/oh-my-zsh-custom/themes/powerlevel10k/
+
 *.swp
 *.tmp
 Thumbs.db
