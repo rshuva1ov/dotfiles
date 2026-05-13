@@ -1,6 +1,6 @@
 # dotfiles
 
-Личные конфиги для macOS: **zsh** (Oh My Zsh + Powerlevel10k), **[eza](https://github.com/eza-community/eza)** (через него в `.zshrc` заданы `ls` / `ll` / `la` / `lt` / `lta`) и **Ghostty**. 
+Личные конфиги для macOS: **zsh** (Oh My Zsh + Powerlevel10k), **[eza](https://github.com/eza-community/eza)** (через него в `.zshrc` заданы `ls` / `ll` / `la` / `lt` / `lta`) и **Ghostty**.
 
 Каталог `home/` зеркалится в `$HOME` через [GNU Stow](https://www.gnu.org/software/stow/): после установки появляются `~/.config/zsh/...`, `~/.config/ghostty/config` и т.д. `ZDOTDIR` задаётся в `home/.zshenv`.
 
@@ -20,7 +20,7 @@ brew install --cask ghostty
 Клонирование и **полная** установка (конфиги Zsh и Ghostty через Stow + zsh с GitHub + eza через brew, если он есть):
 
 ```bash
-git clone <url> ~/Desktop/dotfiles && cd ~/Desktop/dotfiles
+git clone https://github.com/rshuva1ov/dotfiles.git ~/Desktop/dotfiles && cd ~/Desktop/dotfiles
 chmod +x scripts/install-dotfiles.sh
 ./scripts/install-dotfiles.sh
 ```
