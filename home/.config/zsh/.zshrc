@@ -89,7 +89,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=( git zsh-syntax-highlighting zsh-autosuggestions )
+plugins=( git zsh-autosuggestions zsh-syntax-highlighting )
 
 # eza: completions must appear in FPATH before oh-my-zsh runs compinit.
 [[ -d /opt/homebrew/share/zsh/site-functions ]] && FPATH="/opt/homebrew/share/zsh/site-functions:$FPATH"
