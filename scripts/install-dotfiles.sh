@@ -56,4 +56,4 @@ if ! command -v eza >/dev/null 2>&1; then
   printf 'Команда eza не найдена в PATH после установки — проверь brew или PATH.\n' >&2
 fi
 
-echo "Готово: dotfiles, eza (через brew при наличии), zsh с GitHub."
+echo "Готово: dotfiles, eza, zsh с GitHub."
