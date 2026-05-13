@@ -18,9 +18,26 @@ need() {
 need stow
 need git
 
+ensure_brew_formula() {
+  local formula="$1"
+  if ! command -v brew >/dev/null 2>&1; then
+    printf 'Homebrew не найден — установи вручную: brew install %s\n' "$formula" >&2
+    return 0
+  fi
+  if brew list --formula "$formula" &>/dev/null; then
+    printf 'Уже установлено (brew): %s\n' "$formula"
+    return 0
+  fi
+  printf 'Установка (brew): %s\n' "$formula"
+  brew install "$formula"
+}
+
 cd "$ROOT"
 echo "Stow: пакет «home» → $TARGET (в т.ч. zsh и Ghostty)"
 stow -v --restow --target="$TARGET" home
+
+# В .zshrc алиасы ls/ll/… используют eza.
+ensure_brew_formula eza
 
 # Не наследовать ZSH/ZSH_CUSTOM от открытой сессии zsh — иначе клоны уйдут не в $HOME.
 env -u ZSH -u ZSH_CUSTOM bash "$ROOT/scripts/install-zsh-from-github.sh"
@@ -35,4 +52,8 @@ if ! command -v ghostty >/dev/null 2>&1; then
   printf 'Терминал Ghostty не найден в PATH. Установка: brew install --cask ghostty\n' >&2
 fi
 
-echo "Готово: dotfiles и zsh с GitHub."
+if ! command -v eza >/dev/null 2>&1; then
+  printf 'Команда eza не найдена в PATH после установки — проверь brew или PATH.\n' >&2
+fi
+
+echo "Готово: dotfiles, eza (через brew при наличии), zsh с GitHub."
