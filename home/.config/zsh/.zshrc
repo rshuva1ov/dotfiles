@@ -189,3 +189,19 @@ fi
 
 export EDITOR="nano"
 export VISUAL="$EDITOR"
+
+# npm global (prefix из `npm config get prefix`, обычно ~/.npm-global)
+if [[ -d "$HOME/.npm-global/bin" ]]; then
+  case ":$PATH:" in
+    *":$HOME/.npm-global/bin:"*) ;;
+    *) export PATH="$HOME/.npm-global/bin:$PATH" ;;
+  esac
+fi
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
