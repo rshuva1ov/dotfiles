@@ -14,4 +14,4 @@ fi
 cd "$ROOT"
 stow -v --restow --target="$TARGET" home
 echo "Готово: пакет «home» развёрнут в $TARGET"
-echo "Полная установка (zsh с GitHub + Ghostty): ./scripts/install-dotfiles.sh"
+echo "Полная установка (zsh с GitHub, eza, yazi, Ghostty): ./scripts/install-dotfiles.sh"

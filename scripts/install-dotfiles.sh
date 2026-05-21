@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Разворачивает dotfiles (Stow: zsh, Ghostty и остальное из home/) и ставит Oh My Zsh с GitHub.
+# Разворачивает dotfiles (Stow: zsh, yazi, Ghostty и остальное из home/) и ставит Oh My Zsh с GitHub.
 # Запуск из корня репозитория: ./scripts/install-dotfiles.sh
 
 set -euo pipefail
@@ -33,11 +33,12 @@ ensure_brew_formula() {
 }
 
 cd "$ROOT"
-echo "Stow: пакет «home» → $TARGET (в т.ч. zsh и Ghostty)"
+echo "Stow: пакет «home» → $TARGET (в т.ч. zsh, yazi и Ghostty)"
 stow -v --restow --target="$TARGET" home
 
-# В .zshrc алиасы ls/ll/… используют eza.
+# В .zshrc алиасы ls/ll/… используют eza; обёртка y() — yazi.
 ensure_brew_formula eza
+ensure_brew_formula yazi
 
 # Не наследовать ZSH/ZSH_CUSTOM от открытой сессии zsh — иначе клоны уйдут не в $HOME.
 env -u ZSH -u ZSH_CUSTOM bash "$ROOT/scripts/install-zsh-from-github.sh"
@@ -56,4 +57,8 @@ if ! command -v eza >/dev/null 2>&1; then
   printf 'Команда eza не найдена в PATH после установки — проверь brew или PATH.\n' >&2
 fi
 
-echo "Готово: dotfiles, eza, zsh с GitHub."
+if ! command -v yazi >/dev/null 2>&1; then
+  printf 'Команда yazi не найдена в PATH после установки — проверь brew или PATH.\n' >&2
+fi
+
+echo "Готово: dotfiles, eza, yazi, zsh с GitHub."
